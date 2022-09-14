@@ -8,4 +8,5 @@ urlpatterns = [
     path("", include("pages.urls")), 
     # User management
     path("accounts/", include("allauth.urls")),
+    path("books/", include("books.urls")),
 ]
