@@ -61,7 +61,7 @@ class BookTests(TestCase):
         self.assertContains(response, "Log In")
 
 
-    def test_book_detail_view_with_permissions(self):
+    def test_book_detail_view_with_permissions(self): # new
         self.client.login(email="reviewuser@email.com", password="testpass123")
         self.user.user_permissions.add(self.special_permission)
         response = self.client.get(self.book.get_absolute_url())
@@ -69,7 +69,7 @@ class BookTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(no_response.status_code, 404)
         self.assertContains(response, "Harry Potter")
-        self.assertContains(response, "Good")
+        self.assertContains(response, "An excellent review")
         self.assertTemplateUsed(response, "books/book_detail.html")
 
 
